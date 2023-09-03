@@ -1,16 +1,14 @@
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR
+const combine = (input1: number | string, input2: number | string) => {
+  let result
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    return (result = input1 + input2)
+  }
+  result = input1.toString() + input2.toString()
+  return result
 }
 
-const person = {
-  name: "Frank",
-  age: 43,
-  hobbies: ["bowling", "swimming", "running", "hiking"],
-  role: Role.ADMIN
-}
+const combinedAges = combine(30, 26)
+console.log({ combinedAges })
 
-if (person.role === Role.ADMIN) {
-  console.log(`${person.name} is an admin`)
-}
+const combinedNames = combine("Frank", "Santos")
+console.log({ combinedNames })
