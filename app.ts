@@ -1,23 +1,16 @@
-const person: {
-  name: string
-  age: number
-  hobbies: string[]
-  role: [number, string] //tuple
-} = {
+enum Role {
+  ADMIN,
+  READ_ONLY,
+  AUTHOR
+}
+
+const person = {
   name: "Frank",
   age: 43,
   hobbies: ["bowling", "swimming", "running", "hiking"],
-  role: [2, "author"]
+  role: Role.ADMIN
 }
 
-person.role.push("admin") //not caught by TS
-person.role[1] = 10 //not caught by TS
-
-let favActivities: string[]
-favActivities = ["bowling", "swimming", "running", "hiking"]
-
-console.log({ person })
-
-for (const hobby of person.hobbies) {
-  console.log(`${hobby.toUpperCase()} is a hobby of ${person.name}`)
+if (person.role === Role.ADMIN) {
+  console.log(`${person.name} is an admin`)
 }
