@@ -1,14 +1,21 @@
-const combine = (input1: number | string, input2: number | string) => {
+const combine = (
+  input1: number | string,
+  input2: number | string,
+  resultType: "as-number" | "as-string"
+) => {
   let result
-  if (typeof input1 === "number" && typeof input2 === "number") {
-    return (result = input1 + input2)
+  if ((typeof input1 === "number" && typeof input2 === "number") || resultType === "as-number") {
+    result = +input1 + +input2
+  } else {
+    result = input1.toString() + input2.toString()
   }
-  result = input1.toString() + input2.toString()
-  return result
 }
 
-const combinedAges = combine(30, 26)
+const combinedAges = combine(30, 26, "as-number")
 console.log({ combinedAges })
 
-const combinedNames = combine("Frank", "Santos")
+const combinedStringAges = combine("30", "26", "as-number")
+console.log({ combinedAges })
+
+const combinedNames = combine("Frank", "Santos", "as-string")
 console.log({ combinedNames })
